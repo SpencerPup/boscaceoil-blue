@@ -1,10 +1,12 @@
 extends Control
 
 var note_map: NoteMap
+var pattern_map: PatternMap
 @onready var length_counter: Label = %LengthCounter
 
 func _ready() -> void:
 	note_map = get_tree().get_first_node_in_group("NoteMap")
+	pattern_map = get_tree().get_first_node_in_group("PatternMap")
 
 
 func _process(_delta: float) -> void:
@@ -21,6 +23,7 @@ func _on_pause_but_pressed() -> void:
 
 func _on_remove_but_pressed() -> void:
 	note_map.remove_button_active = !note_map.remove_button_active
+	pattern_map.remove_button_active = !pattern_map.remove_button_active
 
 
 func _on_elongate_but_pressed() -> void:

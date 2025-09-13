@@ -97,6 +97,7 @@ func _gui_input(event: InputEvent) -> void:
 				else:
 					_start_dragging()
 			elif mb.button_index == MOUSE_BUTTON_RIGHT:
+				
 				_remove_bar_at_cursor()
 			elif mb.button_index == MOUSE_BUTTON_MIDDLE || (mb.button_index == MOUSE_BUTTON_LEFT && mb.shift_pressed):
 				_insert_bar_at_cursor()

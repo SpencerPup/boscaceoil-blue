@@ -58,7 +58,7 @@ var _note_copied_buffer: PackedVector3Array = PackedVector3Array()
 @onready var _scrollbar: NoteMapScrollbar = $NoteMapScrollbar
 @onready var _overlay: NoteMapOverlay = $NoteMapOverlay
 
-var remove_button_active: bool
+var remove_button_active := false
 
 
 

@@ -53,6 +53,8 @@ var _note_border_width: int = 0
 @onready var _overlay: Control = %PatternMapOverlay
 @onready var _scrollbar: Control = %PatternMapScrollbar
 
+var remove_button_active := false
+
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -149,6 +151,8 @@ func _gui_input(event: InputEvent) -> void:
 			elif mb.button_index == MOUSE_BUTTON_LEFT:
 				if mb.alt_pressed:
 					pass # Handled on release.
+				elif remove_button_active == true:
+					_clear_pattern_at_cursor()
 				else:
 					_select_pattern_at_cursor()
 			elif mb.button_index == MOUSE_BUTTON_RIGHT:
