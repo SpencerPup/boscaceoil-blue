@@ -58,6 +58,9 @@ var _note_copied_buffer: PackedVector3Array = PackedVector3Array()
 @onready var _scrollbar: NoteMapScrollbar = $NoteMapScrollbar
 @onready var _overlay: NoteMapOverlay = $NoteMapOverlay
 
+var remove_button_active: bool
+
+
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -691,10 +694,10 @@ func _stop_drawing_notes() -> void:
 
 
 func _process_note_drawing() -> void:
-	if _note_drawing_mode == DrawingMode.DRAWING_ADD:
-		_add_note_at_cursor()
-	elif _note_drawing_mode == DrawingMode.DRAWING_REMOVE:
+	if _note_drawing_mode == DrawingMode.DRAWING_REMOVE or (_note_drawing_mode == DrawingMode.DRAWING_ADD && remove_button_active == true):
 		_remove_note_at_cursor()
+	elif _note_drawing_mode == DrawingMode.DRAWING_ADD:
+		_add_note_at_cursor()
 
 
 func _add_note_at_cursor() -> void:

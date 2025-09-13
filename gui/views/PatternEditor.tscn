@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://byfh0p3nqrosa"]
+[gd_scene load_steps=8 format=3 uid="uid://byfh0p3nqrosa"]
 
 [ext_resource type="Script" path="res://gui/views/PatternEditor.gd" id="1_eqswn"]
 [ext_resource type="PackedScene" uid="uid://dciyoa2wkbtfp" path="res://gui/views/note_map/NoteMap.tscn" id="1_jt24t"]
 [ext_resource type="PackedScene" uid="uid://dpno0cpboqdm0" path="res://gui/widgets/OptionPicker.tscn" id="3_g46lg"]
+[ext_resource type="Script" path="res://gui/views/MobileButtons.gd" id="3_u3ctg"]
 [ext_resource type="Texture2D" uid="uid://34gjffqqcubk" path="res://assets/icons/plus.png" id="4_67s6m"]
 [ext_resource type="Texture2D" uid="uid://3r61aokrspvu" path="res://assets/icons/record.png" id="4_pyo8q"]
 [ext_resource type="Texture2D" uid="uid://os3udjkncg7b" path="res://assets/icons/minus.png" id="5_0tk4a"]
@@ -19,6 +20,56 @@ script = ExtResource("1_eqswn")
 
 [node name="NoteMap" parent="." instance=ExtResource("1_jt24t")]
 layout_mode = 2
+
+[node name="MobileButtons" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 3
+script = ExtResource("3_u3ctg")
+
+[node name="PlayStopBut" type="Button" parent="MobileButtons"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "play/stop"
+
+[node name="PauseBut" type="Button" parent="MobileButtons"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "pause"
+
+[node name="RemoveBut" type="Button" parent="MobileButtons"]
+layout_mode = 2
+size_flags_horizontal = 0
+toggle_mode = true
+text = "toggle
+remove
+mode"
+
+[node name="ElongateBut" type="Button" parent="MobileButtons"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "+length"
+
+[node name="ShortenBut" type="Button" parent="MobileButtons"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "-length"
+
+[node name="ResetBut" type="Button" parent="MobileButtons"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "reset
+length to 1"
+
+[node name="Label" type="Label" parent="MobileButtons"]
+layout_mode = 2
+text = "note length: "
+
+[node name="LengthCounter" type="Label" parent="MobileButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
 
 [node name="PatternSettings" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(0, 29)
@@ -121,3 +172,10 @@ custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 direction = 2
 placeholder_text = "K"
+
+[connection signal="pressed" from="MobileButtons/PlayStopBut" to="MobileButtons" method="_on_play_stop_but_pressed"]
+[connection signal="pressed" from="MobileButtons/PauseBut" to="MobileButtons" method="_on_pause_but_pressed"]
+[connection signal="pressed" from="MobileButtons/RemoveBut" to="MobileButtons" method="_on_remove_but_pressed"]
+[connection signal="pressed" from="MobileButtons/ElongateBut" to="MobileButtons" method="_on_elongate_but_pressed"]
+[connection signal="pressed" from="MobileButtons/ShortenBut" to="MobileButtons" method="_on_shorten_but_pressed"]
+[connection signal="pressed" from="MobileButtons/ResetBut" to="MobileButtons" method="_on_reset_but_pressed"]

@@ -196,6 +196,24 @@ func _shortcut_input(event: InputEvent) -> void:
 				debug_manager.activate_debug(i)
 
 
+func button_input(keyword: String) -> void:
+	if keyword == "playstop":
+		if music_player.is_playing():
+			music_player.stop_playback()
+		else:
+			music_player.start_playback()
+		
+		get_viewport().set_input_as_handled()
+	
+	elif keyword == "pause":
+		if music_player.is_playing():
+			music_player.pause_playback()
+		else:
+			music_player.start_playback()
+		
+		get_viewport().set_input_as_handled()
+
+
 # Navigation.
 
 func navigate_to(target: Menu.NavigationTarget) -> void:
