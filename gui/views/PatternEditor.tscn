@@ -23,7 +23,6 @@ layout_mode = 2
 
 [node name="MobileButtons" type="HBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/separation = 3
 script = ExtResource("3_u3ctg")
@@ -70,6 +69,27 @@ text = "note length: "
 unique_name_in_owner = true
 layout_mode = 2
 text = "1"
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MobileButtons"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/separation = 3
+
+[node name="UndoBut" type="Button" parent="MobileButtons/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 3
+disabled = true
+text = "undo"
+
+[node name="RedoBut" type="Button" parent="MobileButtons/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 3
+disabled = true
+text = "redo"
 
 [node name="PatternSettings" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(0, 29)
@@ -179,3 +199,5 @@ placeholder_text = "K"
 [connection signal="pressed" from="MobileButtons/ElongateBut" to="MobileButtons" method="_on_elongate_but_pressed"]
 [connection signal="pressed" from="MobileButtons/ShortenBut" to="MobileButtons" method="_on_shorten_but_pressed"]
 [connection signal="pressed" from="MobileButtons/ResetBut" to="MobileButtons" method="_on_reset_but_pressed"]
+[connection signal="pressed" from="MobileButtons/HBoxContainer/UndoBut" to="MobileButtons" method="_on_undo_but_pressed"]
+[connection signal="pressed" from="MobileButtons/HBoxContainer/RedoBut" to="MobileButtons" method="_on_redo_but_pressed"]
